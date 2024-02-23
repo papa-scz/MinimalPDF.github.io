@@ -4,46 +4,49 @@ body, html {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
+    justify-content: stretch; /* Modifié pour étirer les éléments horizontalement */
     align-items: stretch; /* Modifié pour étirer les éléments verticalement */
     background-color: #f0f0f0;
 }
 
 #container {
     display: flex;
-    width: 100%; /* Prend toute la largeur */
-    height: 100%; /* Prend toute la hauteur */
-    flex-wrap: nowrap; /* Assure que les éléments ne se replient pas */
+    flex-direction: column; /* Changez cela si vous préférez une disposition horizontale */
+    width: 100%; /* Utilise toute la largeur */
+    height: 100%; /* Utilise toute la hauteur */
+    flex-grow: 1; /* Permet au conteneur de remplir l'espace parent */
     background-color: #fff;
 }
 
 #thumbnails, #pdf-viewer, #tools {
-    flex-grow: 1; /* Permet aux éléments de grandir pour remplir l'espace */
+    flex-grow: 1; /* Permet aux éléments de grandir pour remplir l'espace disponible */
     overflow-y: auto; /* Ajoute un défilement si le contenu dépasse */
 }
 
 #thumbnails {
-    /* S'assure que thumbnails prend la largeur nécessaire ou une largeur fixe si vous préférez */
     background-color: #eee;
+    width: 15%; /* ou une largeur fixe si vous préférez */
 }
 
 #pdf-viewer {
     flex-grow: 2; /* Donne plus d'espace au viewer PDF */
     padding: 20px;
     text-align: center;
+    width: 70%; /* ou une largeur fixe si vous préférez */
 }
 
 #tools {
     background-color: #ddd;
     padding: 10px;
+    width: 15%; /* ou une largeur fixe si vous préférez */
 }
 
+/* Supprimez l'ordre négatif pour que les éléments s'affichent dans l'ordre naturel */
 @media (max-width: 768px) {
     #container {
-        flex-direction: column; /* Change l'orientation en colonne pour les écrans plus petits */
+        flex-direction: row; /* Changez cela si vous préférez une disposition verticale */
     }
     #tools, #thumbnails {
-        order: -1; /* Place les outils et les miniatures en haut/bas sur petits écrans */
         width: 100%; /* Prend toute la largeur */
     }
     #pdf-viewer {
@@ -63,4 +66,3 @@ body, html {
     border: 1px solid #ccc;
     z-index: 1000; /* Assure que le conteneur est au-dessus des autres éléments */
 }
-
