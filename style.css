@@ -2,47 +2,55 @@ body, html {
     font-family: 'Calibri', 'Arial', sans-serif;
     height: 100%;
     margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: stretch; /* Modifié pour étirer les éléments verticalement */
     background-color: #f0f0f0;
 }
+
 #container {
     display: flex;
-    flex-wrap: wrap;
-    max-width: 1000px;
-    height: 80%;
-    border: 1px solid #ccc;
+    width: 100%; /* Prend toute la largeur */
+    height: 100%; /* Prend toute la hauteur */
+    flex-wrap: nowrap; /* Assure que les éléments ne se replient pas */
     background-color: #fff;
 }
-#thumbnails {
-    flex: 1;
-    max-width: 200px;
-    background-color: #eee;
-    overflow-y: auto;
-    display: none; /* Hide by default, can be shown with JavaScript */
+
+#thumbnails, #pdf-viewer, #tools {
+    flex-grow: 1; /* Permet aux éléments de grandir pour remplir l'espace */
+    overflow-y: auto; /* Ajoute un défilement si le contenu dépasse */
 }
+
+#thumbnails {
+    /* S'assure que thumbnails prend la largeur nécessaire ou une largeur fixe si vous préférez */
+    background-color: #eee;
+}
+
 #pdf-viewer {
-    flex: 2;
+    flex-grow: 2; /* Donne plus d'espace au viewer PDF */
     padding: 20px;
     text-align: center;
-    overflow-y: auto;
 }
+
 #tools {
-    flex: 1;
-    max-width: 200px;
     background-color: #ddd;
     padding: 10px;
 }
+
 @media (max-width: 768px) {
-    #tools {
-        max-width: 100%;
-        order: -1; /* Show tools at the bottom in portrait mode */
+    #container {
+        flex-direction: column; /* Change l'orientation en colonne pour les écrans plus petits */
     }
-    #thumbnails {
-        max-width: 100%;
+    #tools, #thumbnails {
+        order: -1; /* Place les outils et les miniatures en haut/bas sur petits écrans */
+        width: 100%; /* Prend toute la largeur */
+    }
+    #pdf-viewer {
+        flex-grow: 1; /* Assure que le viewer PDF ne prend pas trop d'espace */
     }
 }
+
 .file-input-container {
     position: fixed;
     top: 50%;
@@ -53,7 +61,6 @@ body, html {
     padding: 20px;
     border-radius: 10px;
     border: 1px solid #ccc;
+    z-index: 1000; /* Assure que le conteneur est au-dessus des autres éléments */
 }
-.file-input-container input[type="file"] {
-    margin-top: 10px;
-}
+
