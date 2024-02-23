@@ -40,9 +40,34 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Exemple de fonction pour charger un PDF (à implémenter avec PDF.js ou autre)
     function loadPdf(url) {
-        pdfViewer.innerText = `Le PDF ${url} serait chargé et affiché ici.`;
-        // Implémentez la logique de chargement du PDF avec PDF.js ici
-    }
+    pdfjsLib.getDocument(url).promise.then(function(pdfDoc) {
+        console.log("Le PDF est chargé");
+
+        // Affichez la première page pour l'exemple
+        pdfDoc.getPage(1).then(function(page) {
+            var canvas = document.createElement('canvas');
+            var ctx = canvas.getContext('2d');
+            var viewport = page.getViewport({scale: 1.5});
+
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+
+            // Préparer l'affichage du rendu de la page
+            var renderContext = {
+                canvasContext: ctx,
+                viewport: viewport
+            };
+            page.render(renderContext);
+
+            // Ajouter le canvas au PDF viewer
+            pdfViewer.innerHTML = ''; // Nettoyer le viewer
+            pdfViewer.appendChild(canvas);
+        });
+    }).catch(function(error) {
+        console.log("Erreur lors du chargement du PDF :", error);
+    });
+}
+
 
     // Exemple de fonction pour charger un PDF à partir d'un fichier (à implémenter avec PDF.js ou autre)
     function loadPdfFromFile(file) {
