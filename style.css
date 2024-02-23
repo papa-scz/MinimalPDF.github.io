@@ -3,7 +3,7 @@ body, html {
     height: 100%;
     margin: 0;
     padding: 0;
-    display: flex;
+    /* display: flex; */
     justify-content: stretch; /* Modifié pour étirer les éléments horizontalement */
     align-items: stretch; /* Modifié pour étirer les éléments verticalement */
     background-color: #f0f0f0;
@@ -11,16 +11,16 @@ body, html {
 
 #container {
     display: flex;
-    flex-direction: column; /* Changez cela si vous préférez une disposition horizontale */
-    width: 100%; /* Utilise toute la largeur */
-    height: 100%; /* Utilise toute la hauteur */
-    flex-grow: 1; /* Permet au conteneur de remplir l'espace parent */
+    justify-content: space-between; /* Répartit les éléments à l'intérieur de manière égale */
     background-color: #fff;
+    height: 100vh; /* Assure que le conteneur remplit toute la hauteur de la vue */
 }
 
 #thumbnails, #pdf-viewer, #tools {
-    flex-grow: 1; /* Permet aux éléments de grandir pour remplir l'espace disponible */
+    flex-grow: 1; /* Permet aux éléments internes de remplir l'espace disponible */
     overflow-y: auto; /* Ajoute un défilement si le contenu dépasse */
+    width: 30%; /* Répartit l'espace disponible de manière égale entre les éléments */
+    margin: 0 5px; /* Ajoute une marge autour des éléments */
 }
 
 #thumbnails {
@@ -39,6 +39,14 @@ body, html {
     background-color: #ddd;
     padding: 10px;
     width: 15%; /* ou une largeur fixe si vous préférez */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#tools i {
+    margin: 5px 0;
 }
 
 /* Supprimez l'ordre négatif pour que les éléments s'affichent dans l'ordre naturel */
