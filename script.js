@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const fileInput = document.querySelector('input[type="file"]');
     const urlInput = document.querySelector('input[type="url"]');
     const pdfViewer = document.getElementById('pdf-viewer');
-    const versionNumber = '1.0.0';
+    const versionNumber = '1.0.1';
     const versionElement = document.getElementById('version');
 
     // Sélectionner l'élément et mettre à jour son contenu
