@@ -5,7 +5,7 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = './lib/pdfjs/pdf.worker.mjs';
 document.addEventListener('DOMContentLoaded', function() {
     const fileInput = document.getElementById('file-input');
     const pdfViewer = document.getElementById('pdf-viewer');
-    const versionNumber = '1.0.1';
+    const versionNumber = '1.0.2';
     const versionElement = document.getElementById('version');
 
     versionElement.innerText += versionNumber;
