@@ -69,10 +69,11 @@ document.addEventListener('DOMContentLoaded', function() {
 }
 
 
-    // Exemple de fonction pour charger un PDF à partir d'un fichier (à implémenter avec PDF.js ou autre)
     function loadPdfFromFile(file) {
-        const url = URL.createObjectURL(file);
-        loadPdf(url);
-        // N'oubliez pas de libérer l'URL de l'objet quand elle n'est plus nécessaire
-    }
+    const url = URL.createObjectURL(file);
+    loadPdf(url);
+    // N'oubliez pas de libérer l'URL de l'objet quand elle n'est plus nécessaire
+    URL.revokeObjectURL(url);
+}
+
 });
