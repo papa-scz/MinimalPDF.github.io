@@ -1,5 +1,8 @@
 import * as pdfjsLib from './lib/pdfjs/pdf.mjs';
 
+// Configuration du worker
+pdfjsLib.GlobalWorkerOptions.workerSrc = './lib/pdfjs/pdf.worker.mjs';
+
 document.addEventListener('DOMContentLoaded', function() {
     const fileInput = document.querySelector('input[type="file"]');
     const urlInput = document.querySelector('input[type="url"]');
