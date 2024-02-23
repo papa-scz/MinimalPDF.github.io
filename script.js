@@ -1,11 +1,11 @@
-import * as pdfjsLib from './lib/pdfjs/pdf.mjs';
+import * as pdfjsLib from './lib/pdfjs/build/pdf.mjs';
 
-pdfjsLib.GlobalWorkerOptions.workerSrc = './lib/pdfjs/pdf.worker.mjs';
+pdfjsLib.GlobalWorkerOptions.workerSrc = './lib/pdfjs/build/pdf.worker.mjs';
 
 document.addEventListener('DOMContentLoaded', function() {
     const fileInput = document.getElementById('file-input');
     const pdfViewer = document.getElementById('pdf-viewer');
-    const versionNumber = '1.0.4';
+    const versionNumber = '1.0.5';
     const versionElement = document.getElementById('version');
 
     versionElement.innerText += versionNumber;
