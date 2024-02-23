@@ -1,3 +1,5 @@
+import * as pdfjsLib from './lib/pdfjs/pdf.mjs';
+
 document.addEventListener('DOMContentLoaded', function() {
     const fileInput = document.querySelector('input[type="file"]');
     const urlInput = document.querySelector('input[type="url"]');
