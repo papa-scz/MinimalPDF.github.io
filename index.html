@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MinimalPDF</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+        #container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            height: 80%;
+            border: 1px solid #ccc;
+            background-color: #fff;
+        }
+        #thumbnails {
+            flex: 1;
+            max-width: 200px;
+            background-color: #eee;
+            overflow-y: auto;
+            display: none; /* Hide by default, can be shown with JavaScript */
+        }
+        #pdf-viewer {
+            flex: 2;
+            padding: 20px;
+            text-align: center;
+            overflow-y: auto;
+        }
+        #tools {
+            flex: 1;
+            max-width: 200px;
+            background-color: #ddd;
+            padding: 10px;
+        }
+        @media (max-width: 768px) {
+            #tools {
+                max-width: 100%;
+                order: -1; /* Show tools at the bottom in portrait mode */
+            }
+            #thumbnails {
+                max-width: 100%;
+            }
+        }
+        .file-input-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+        }
+        .file-input-container input[type="file"] {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="thumbnails">Miniatures</div>
+        <div id="pdf-viewer">PDF Viewer</div>
+        <div id="tools">
+            <button>Dessiner</button>
+            <button>Annoter</button>
+            <button>Surligner</button>
+        </div>
+    </div>
+    <div class="file-input-container">
+        <p>Charger un PDF</p>
+        <input type="url" placeholder="URL du PDF">
+        <input type="file" accept="application/pdf">
+        <p>Ou glisser-déposer le fichier ici</p>
+    </div>
+</body>
+</html>
