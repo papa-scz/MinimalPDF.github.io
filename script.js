@@ -53,30 +53,29 @@ document.addEventListener('DOMContentLoaded', function() {
     pdfjsLib.getDocument(url).promise.then(function(pdfDoc) {
         console.log("Le PDF est chargé");
 
-        // Affichez la première page pour l'exemple
         pdfDoc.getPage(1).then(function(page) {
             var canvas = document.createElement('canvas');
             var ctx = canvas.getContext('2d');
-            var viewport = page.getViewport({scale: 1.5});
+            // Assurez-vous que `getViewport` est appelé avec un objet de configuration.
+            var viewport = page.getViewport({ scale: 1.5 });
 
             canvas.height = viewport.height;
             canvas.width = viewport.width;
 
-            // Préparer l'affichage du rendu de la page
             var renderContext = {
                 canvasContext: ctx,
                 viewport: viewport
             };
             page.render(renderContext);
 
-            // Ajouter le canvas au PDF viewer
-            pdfViewer.innerHTML = ''; // Nettoyer le viewer
+            pdfViewer.innerHTML = '';
             pdfViewer.appendChild(canvas);
         });
     }).catch(function(error) {
         console.log("Erreur lors du chargement du PDF :", error);
     });
 }
+
 
 
     function loadPdfFromFile(file) {
